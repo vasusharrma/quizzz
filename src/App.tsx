@@ -1,10 +1,21 @@
-import Button from './componenets/Button'
+import Gameover from './componenets/Gameover'
+import QuestionCard from './componenets/QuestionCard'
+import Startgame from './componenets/Startgame'
+import { Gametype } from './types/GameTypes'
+import { useState } from 'react'
 
 function App() {
+  const [gameState, setGameState] = useState<Gametype>('start')
+
+  function gameStart(): void {
+    setGameState('playing')
+  }
+
   return (
     <div>
-      <h1 className='bg-blue-700 text-white text-center'>Hello</h1>
-      <Button background_color={'bg-blue-800'} fontSize={30} />
+      {gameState === 'start' && <Startgame onStart={gameStart} />}
+      {gameState === 'playing' && <QuestionCard />}
+      {gameState === 'end' && <Gameover />}
     </div>
   )
 }
