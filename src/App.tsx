@@ -5,16 +5,23 @@ import { Gametype } from './types/GameTypes'
 import { useState } from 'react'
 
 function App() {
-  const [gameState, setGameState] = useState<Gametype>('playing')
+  const [gameState, setGameState] = useState<Gametype>('start')
+  const [selectOption, setSelectOption] = useState<number | null>(null)
 
   function handleStart(): void {
     setGameState('playing')
   }
 
+  function handleAnswer(index: number): void {
+    setSelectOption(index)
+  }
+
   return (
     <div>
       {gameState === 'start' && <Startgame onStart={handleStart} />}
-      {gameState === 'playing' && <QuestionCard />}
+      {gameState === 'playing' && (
+        <QuestionCard onAnswerSelect={handleAnswer} selectOption={selectOption} />
+      )}
       {gameState === 'end' && <Gameover />}
     </div>
   )
