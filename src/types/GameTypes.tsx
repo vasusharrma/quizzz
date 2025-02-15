@@ -5,3 +5,8 @@ export interface Question {
   options: string[]
   correct: number
 }
+
+export type cardel = {
+  soption: number | null
+  cardNum: number | null
+}

@@ -1,14 +1,15 @@
 import { QUESTIONS } from '@/data/question'
 import Questions from './Questions'
+import { cardel } from '@/types/GameTypes'
 
 interface QuestionCardProps {
-  onAnswerSelect: (index: number) => void
-  selectOption: number | null
+  onAnswerSelect: (index: number, qnum: number) => void
+  selectOption: cardel
 }
 
 const QuestionCard = ({ onAnswerSelect, selectOption }: QuestionCardProps) => {
   return (
-    <div className='box-border flex flex-col w-[100%] items-center  gap-7 justify-center bg-gray-50 min-h-screen'>
+    <div className='box-border flex flex-col  items-center   justify-center bg-gray-50 min-h-screen'>
       {QUESTIONS.map((ques, index) => {
         return (
           <Questions
