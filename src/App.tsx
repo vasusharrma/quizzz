@@ -6,6 +6,8 @@ import { useState } from 'react'
 
 function App() {
   const [gameState, setGameState] = useState<Gametype>('playing')
+  // const [score, setScore] = useState<number>(0)
+  // const [timer, setTimer] = useState<number>(30)
 
   const [selectOption, setSelectOption] = useState<cardel>({ soption: null, cardNum: null })
 
@@ -18,13 +20,13 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       {gameState === 'start' && <Startgame onStart={handleStart} />}
       {gameState === 'playing' && (
         <QuestionCard onAnswerSelect={handleAnswer} selectOption={selectOption} />
       )}
       {gameState === 'end' && <Gameover />}
-    </div>
+    </>
   )
 }
 
